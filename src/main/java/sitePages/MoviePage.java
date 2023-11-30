@@ -14,13 +14,13 @@ public class MoviePage {
         this.driver = driver;
     }
 
-    private By ratingStar = By.xpath("//*[@id=\"__next\"]/main/div/section[1]/section/div[3]/section/section/div[2]/div[2]/div/div[2]/button/span/div/div[2]/div");
+    private By ratingStar = By.xpath("//div[@class='sc-e226b0e3-3 dwkouE']//div[@class='sc-3a4309f8-0 bjXIAP sc-9aa2061f-1 foKegm']//div[@class='sc-3a4309f8-1 dggvUg']//button");
     private By chooseLvl = By.xpath("//button[@aria-label='Rate 10']");
     private By submitRateBtn = By.xpath("/html/body/div[4]/div[2]/div/div[2]/div/div[2]/div[2]/button");
     private By wathchlistBtn = By.className("ipc-split-button__btn");
     private By watchListAdded = By.xpath("//*[@id=\"__next\"]/main/div/section[1]/section/div[3]/section/section/div[3]/div[2]/div[2]/div[3]/div/div/button[1]/div/div[1]");
     private By watchListMenu = By.xpath("//*[@id=\"imdbHeader\"]/div[2]/div[4]/a/span");
-
+    private By movieName = By.className("sc-7f1a92f5-1 benbRT");
 
     public String watchListMsg()
     {
@@ -30,12 +30,10 @@ public class MoviePage {
     public void rateMovie()
     {
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        WebElement ratingStarElement = wait.until(ExpectedConditions.elementToBeClickable(ratingStar));
+        //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+     //  WebElement ratingStarElement = wait.until(ExpectedConditions.elementToBeClickable(ratingStar));
 
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ratingStarElement);
-        ratingStarElement.click();
-
+        driver.findElement(ratingStar).click();
     }
     public void chooseRate()
     {
@@ -88,6 +86,11 @@ public class MoviePage {
         }
 
         throw new RuntimeException("Failed to click watch list menu after multiple attempts.");
+    }
+
+    public String getMovieName()
+    {
+        return driver.findElement(movieName).getText();
     }
 
 

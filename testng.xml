@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="MySuite">
+    <test name="MyTest">
+        <classes>
+            <class name="LoginTest.LoginTest">
+                <methods>
+                    <include name="testSuccessLogin"/>
+                    <include name="ivalidLoginWithNoCredentials"/>
+
+
+
+
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
